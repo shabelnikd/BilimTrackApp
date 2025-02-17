@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/onBoardFragment">
+
+    <fragment
+        android:id="@+id/onBoardFragment"
+        android:name="com.shabelnikd.bilimtrack.ui.fragments.onboard.OnBoardFragment"
+        android:label="fragment_on_board"
+        tools:layout="@layout/fragment_on_board" />
+    <fragment
+        android:id="@+id/authFragment"
+        android:name="com.shabelnikd.bilimtrack.ui.fragments.auth.AuthFragment"
+        android:label="fragment_auth"
+        tools:layout="@layout/fragment_auth"/>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.shabelnikd.bilimtrack.ui.fragments.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/ratingTabFragment"
+        android:name="com.shabelnikd.bilimtrack.ui.fragments.rating.RatingTabFragment"
+        android:label="fragment_rating_tab"
+        tools:layout="@layout/fragment_rating_tab" />
+</navigation>
