@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 // Wrap with List<RatingUsersResponse>
 @Serializable
 data class RatingUsersResponse(
-    val isTopWinnerPosition: Int? = null,
+    var isTopWinnerPosition: Int? = null,
     @SerialName("firstName")
     val firstName: String? = null,
     @SerialName("lastName")

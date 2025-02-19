@@ -10,37 +10,39 @@ import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
+import retrofit2.http.Headers
 import retrofit2.http.POST
 
 interface BilimTrackApiService {
-
     @FormUrlEncoded
     @POST("jwt/create/")
     suspend fun userLogin(
         @Field("username") userName: String,
         @Field("password") password: String
-    ) : Response<TokenCreateResponse>
+    ): Response<TokenCreateResponse>
 
     @FormUrlEncoded
     @POST("jwt/refresh/")
     suspend fun userRefresh(
         @Field("refresh") refresh: String,
-    ) : Response<TokenRefreshResponse>
+    ): Response<TokenRefreshResponse>
 
     @GET("subjects/me/")
     @Authenticated
+    @Headers("Cache-Control: public, max-age=600")
     suspend fun getUserSubjects(): Response<List<SubjectsMeResponse>>
 
     @GET("users/me/")
     @Authenticated
+    @Headers("Cache-Control: public, max-age=600")
     suspend fun getUserMeInfo(): Response<MeResponse>
 
     @GET("rating/users/")
-    @Authenticated
+    @Headers("Cache-Control: public, max-age=600")
     suspend fun getRatingUsers(): Response<List<RatingUsersResponse>>
 
     @GET("rating/groups/")
-    @Authenticated
+    @Headers("Cache-Control: public, max-age=600")
     suspend fun getRatingGroups(): Response<List<RatingGroupsResponse>>
 
 

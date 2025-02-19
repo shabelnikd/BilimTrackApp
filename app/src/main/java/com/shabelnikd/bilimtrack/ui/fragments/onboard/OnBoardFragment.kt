@@ -13,22 +13,20 @@ import com.shabelnikd.bilimtrack.adapters.OnBoardAdapter
 import com.shabelnikd.bilimtrack.databinding.FragmentOnBoardBinding
 import com.shabelnikd.bilimtrack.ui.MainActivity
 import com.shabelnikd.bilimtrack.utils.PreferenceHelper
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.android.ext.android.inject
 
-@AndroidEntryPoint
 class OnBoardFragment : Fragment() {
 
     private var _binding: FragmentOnBoardBinding? = null
     private val binding get() = _binding!!
 
-    val sharedPreferences = PreferenceHelper()
+    private val preferenceHelper: PreferenceHelper by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentOnBoardBinding.inflate(inflater, container, false)
-        sharedPreferences.initialize(requireContext())
         return binding.root
     }
 
@@ -97,7 +95,7 @@ class OnBoardFragment : Fragment() {
         })
 
         binding.btnStart.setOnClickListener {
-            sharedPreferences.isFirstLaunch = false
+            preferenceHelper.isFirstLaunch = false
             activity?.finish()
             val intent = Intent(requireContext(), MainActivity::class.java)
             startActivity(intent)

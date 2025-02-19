@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextView.SemiBold.Shadow" parent="Widget.AppCompat.TextView">
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:shadowColor">#10000000</item>
+        <item name="android:shadowDx">-5</item>
+        <item name="android:shadowDy">5</item>
+        <item name="android:shadowRadius">1</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="TextView.CardValue" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/poppins_semi_bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextView.CardHeader" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/poppins_semi_bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="MaterialCardView.Common" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">4dp</item>
+        <item name="cardElevation">6dp</item>
+    </style>
+
+    <style name="LinearLayout.CardHeader" parent="">
+        <item name="android:background">@drawable/bg_with_corners</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    
+</resources>

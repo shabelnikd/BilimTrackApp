@@ -1,68 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
     tools:context=".ui.fragments.rating.RatingTabFragment">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/idTabLayoutRating"
         android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:background="@color/white"
-        app:tabTextColor="@color/black"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/viewPagerRating"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/isGroupRating"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Место"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/idTabLayoutRating"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/center015"
-        />
-
-    <TextView
-        android:id="@+id/isGroupRating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Группа"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/idTabLayoutRating"
-        app:layout_constraintStart_toStartOf="@id/center015"
-        app:layout_constraintEnd_toEndOf="@id/center08"
-        app:layout_constraintHorizontal_bias="0.1"
-        />
-
-    <TextView
-        android:id="@+id/isStudentRating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Студент"
-        android:textSize="16sp"
-        android:visibility="invisible"
-        app:layout_constraintTop_toBottomOf="@id/idTabLayoutRating"
-        app:layout_constraintStart_toStartOf="@id/center015"
-        app:layout_constraintEnd_toEndOf="@id/center08"
-        app:layout_constraintHorizontal_bias="0.1"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Группа"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/idTabLayoutRating"
-        app:layout_constraintStart_toStartOf="@id/center08"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        />
+        app:tabTextColor="@color/black" />
 
 
     <androidx.viewpager2.widget.ViewPager2
@@ -70,10 +24,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/isGroupRating"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/idTabLayoutRating" />
 
 
     <androidx.constraintlayout.widget.Guideline

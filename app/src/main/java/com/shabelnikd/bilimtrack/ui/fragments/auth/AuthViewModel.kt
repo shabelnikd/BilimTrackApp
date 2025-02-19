@@ -3,17 +3,16 @@ package com.shabelnikd.bilimtrack.ui.fragments.auth
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.shabelnikd.bilimtrack.model.repositories.BilimTrackRepository
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
-import javax.inject.Inject
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-@HiltViewModel
-class AuthViewModel @Inject constructor(
-    private val apiRepository: BilimTrackRepository
-) : ViewModel() {
+class AuthViewModel() : ViewModel(), KoinComponent {
+
+    private val apiRepository: BilimTrackRepository by inject()
 
     private val _loginResult = MutableSharedFlow<LoginResult>()
     val loginResult: SharedFlow<LoginResult> = _loginResult.asSharedFlow()

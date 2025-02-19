@@ -1,4 +1,5 @@
 package com.shabelnikd.bilimtrack.model.models
+
 import com.shabelnikd.bilimtrack.R
 
 enum class BackgroundAchieve(val apiRarityTypeId: Int, val resId: Int) {

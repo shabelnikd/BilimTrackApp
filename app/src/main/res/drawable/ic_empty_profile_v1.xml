@@ -3,10 +3,10 @@
     android:height="52dp"
     android:viewportWidth="1920"
     android:viewportHeight="1920">
-  <group>
-   <path
-        android:pathData="M957.5,962.5m-957.5,0a957.5,957.5 0,1 1,1915 0a957.5,957.5 0,1 1,-1915 0"
-        android:strokeWidth="0"
-        android:fillColor="#bdbdbd"/>
-  </group>
+    <group>
+        <path
+            android:fillColor="#bdbdbd"
+            android:pathData="M957.5,962.5m-957.5,0a957.5,957.5 0,1 1,1915 0a957.5,957.5 0,1 1,-1915 0"
+            android:strokeWidth="0" />
+    </group>
 </vector>

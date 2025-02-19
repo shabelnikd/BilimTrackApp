@@ -3,7 +3,6 @@ package com.shabelnikd.bilimtrack.adapters
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.shabelnikd.bilimtrack.ui.fragments.onboard.OnBoardPageFragment
 import com.shabelnikd.bilimtrack.ui.fragments.rating.RatingTabFragment
 import com.shabelnikd.bilimtrack.ui.fragments.rating.RatingTabPageFragment
 import kotlin.apply

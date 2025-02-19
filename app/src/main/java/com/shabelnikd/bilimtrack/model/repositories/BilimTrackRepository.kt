@@ -8,10 +8,10 @@ import com.shabelnikd.bilimtrack.model.models.TokenCreateResponse
 import com.shabelnikd.bilimtrack.model.models.TokenRefreshResponse
 import com.shabelnikd.bilimtrack.model.service.BilimTrackApiService
 import com.shabelnikd.bilimtrack.utils.safeApiCall
+import org.koin.core.component.KoinComponent
 import retrofit2.Response
-import javax.inject.Inject
 
-class BilimTrackRepository @Inject constructor(private val apiService: BilimTrackApiService) {
+class BilimTrackRepository(private val apiService: BilimTrackApiService) : KoinComponent {
     suspend fun userLogin(
         userName: String,
         password: String
@@ -31,6 +31,6 @@ class BilimTrackRepository @Inject constructor(private val apiService: BilimTrac
         safeApiCall({ apiService.getRatingUsers() }, "Error fetching users rating")
 
     suspend fun getRatingGroups(): Result<Response<List<RatingGroupsResponse>>> =
-        safeApiCall({ apiService.getRatingGroups()}, "Error fetching groups rating")
+        safeApiCall({ apiService.getRatingGroups() }, "Error fetching groups rating")
 
 }

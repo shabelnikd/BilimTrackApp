@@ -15,11 +15,10 @@ import com.google.android.material.snackbar.Snackbar
 import com.shabelnikd.bilimtrack.databinding.FragmentAuthBinding
 import com.shabelnikd.bilimtrack.ui.MainActivity
 import com.shabelnikd.bilimtrack.utils.PreferenceHelper
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
-@AndroidEntryPoint
+
 class AuthFragment : Fragment() {
     private val viewModel: AuthViewModel by viewModels()
 
@@ -29,14 +28,13 @@ class AuthFragment : Fragment() {
     private var isUsernameFilled: Boolean = false
     private var isPasswordFilled: Boolean = false
 
-    val sharedPreferences = PreferenceHelper()
+    private val preferenceHelper: PreferenceHelper by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAuthBinding.inflate(inflater, container, false)
-        sharedPreferences.initialize(requireContext())
         return binding.root
     }
 
@@ -64,30 +62,34 @@ class AuthFragment : Fragment() {
         }
 
         binding.logInButton.setOnClickListener {
-            viewModel.userLogIn(binding.etUsername.editText?.text.toString(), binding.etPassword.editText?.text.toString())
+            viewModel.userLogIn(
+                binding.etUsername.editText?.text.toString(),
+                binding.etPassword.editText?.text.toString()
+            )
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-            viewModel.loginResult.collect { result ->
-                when (result) {
-                    is AuthViewModel.LoginResult.Success -> {
-                        val accessToken = result.accessToken
-                        val refreshToken = result.refreshToken
+                viewModel.loginResult.collect { result ->
+                    when (result) {
+                        is AuthViewModel.LoginResult.Success -> {
+                            val accessToken = result.accessToken
+                            val refreshToken = result.refreshToken
 
-                        sharedPreferences.accessToken = accessToken
-                        sharedPreferences.refreshToken = refreshToken
+                            preferenceHelper.accessToken = accessToken
+                            preferenceHelper.refreshToken = refreshToken
 
-                        activity?.finish()
-                        val intent = Intent(requireContext(), MainActivity::class.java)
-                        startActivity(intent)
-                    }
-                    is AuthViewModel.LoginResult.Error -> {
-                        val errorMessage = result.errorMessage
-                        Snackbar.make(binding.root, errorMessage, 2000).show()
+                            activity?.finish()
+                            val intent = Intent(requireContext(), MainActivity::class.java)
+                            startActivity(intent)
+                        }
+
+                        is AuthViewModel.LoginResult.Error -> {
+                            val errorMessage = result.errorMessage
+                            Snackbar.make(binding.root, errorMessage, 2000).show()
+                        }
                     }
                 }
-            }
             }
         }
 

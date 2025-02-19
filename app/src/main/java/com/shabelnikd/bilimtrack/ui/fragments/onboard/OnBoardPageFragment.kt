@@ -11,9 +11,7 @@ import com.airbnb.lottie.LottieDrawable
 import com.shabelnikd.bilimtrack.R
 import com.shabelnikd.bilimtrack.databinding.FragmentOnBoardPageBinding
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class OnBoardPageFragment : Fragment() {
 
     private var _binding: FragmentOnBoardPageBinding? = null

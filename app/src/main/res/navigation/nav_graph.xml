@@ -14,7 +14,7 @@
         android:id="@+id/authFragment"
         android:name="com.shabelnikd.bilimtrack.ui.fragments.auth.AuthFragment"
         android:label="fragment_auth"
-        tools:layout="@layout/fragment_auth"/>
+        tools:layout="@layout/fragment_auth" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.shabelnikd.bilimtrack.ui.fragments.profile.ProfileFragment"

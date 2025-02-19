@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/inter_28pt_bold"
             android:text="Вход в Bilim"
-            android:textColor="@color/black"
+            android:textColor="#666666"
             android:textSize="24sp" />
 
         <TextView
@@ -48,16 +48,16 @@
 
         android:layout_marginTop="16dp"
         android:hint="Имя пользователя"
-        app:hintTextColor="@color/accentColor"
-
         app:boxStrokeColor="@color/accentColor"
+
+        app:hintTextColor="@color/accentColor"
         app:layout_constraintTop_toBottomOf="@id/lnLogInText">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="12dp"
             android:fontFamily="@font/poppins_regular"
+            android:padding="12dp"
             android:textColor="@color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -71,9 +71,9 @@
 
         android:layout_marginTop="8dp"
         android:hint="Пароль"
-        app:hintTextColor="@color/accentColor"
         app:boxStrokeColor="@color/accentColor"
         app:endIconMode="password_toggle"
+        app:hintTextColor="@color/accentColor"
         app:layout_constraintTop_toBottomOf="@id/etUsername"
 
 
@@ -83,9 +83,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
             android:inputType="textPassword"
             android:padding="12dp"
-            android:fontFamily="@font/poppins_regular"
             android:textColor="@color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -95,19 +95,18 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        app:cornerRadius="8dp"
-        android:text="Войти"
-        android:textColor="@color/white"
-        android:elegantTextHeight="true"
-        android:textAllCaps="true"
-        android:visibility="invisible"
         android:defaultFocusHighlightEnabled="true"
+        android:elegantTextHeight="true"
         android:fontFamily="@font/poppins_semi_bold"
         android:includeFontPadding="false"
-        app:layout_constraintTop_toBottomOf="@id/etPassword"
-        app:layout_constraintStart_toStartOf="@id/etPassword"
+        android:text="Войти"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:visibility="invisible"
+        app:cornerRadius="8dp"
         app:layout_constraintEnd_toEndOf="@id/etPassword"
-        />
+        app:layout_constraintStart_toStartOf="@id/etPassword"
+        app:layout_constraintTop_toBottomOf="@id/etPassword" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

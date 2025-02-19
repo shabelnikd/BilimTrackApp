@@ -4,4 +4,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="background_color">#FFFFFF</color>
     <color name="accentColor">#0589C7</color>
+    <color name="winnerPos1">#66FAA918</color>
+    <color name="winnerPos2">#66C0C0C0</color>
+    <color name="winnerPos3">#66CE8946</color>
+
 </resources>

@@ -4,7 +4,6 @@ plugins {
     kotlin("plugin.serialization") version "2.1.10"
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-parcelize")
-    id("com.google.dagger.hilt.android")
     id("com.google.devtools.ksp")
 }
 
@@ -44,9 +43,6 @@ android {
         viewBinding = true
     }
 
-    hilt {
-        enableAggregatingTask = true
-    }
 }
 
 dependencies {
@@ -80,13 +76,12 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.retrofit2.kotlinx.serialization.converter)
 
-    //Hilt
-    implementation(libs.hilt.android)
-    ksp(libs.hilt.android.compiler)
+    // Koin
+    implementation(libs.koin.android.v402)
 
     //Circle Profile Image
-    implementation("de.hdodenhof:circleimageview:3.1.0")
+    implementation(libs.circleimageview)
 
     // Glide
-    implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation(libs.glide)
 }

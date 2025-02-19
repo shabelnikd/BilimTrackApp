@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:strokeColor="#e0e0e0"
-    app:strokeWidth="1dp"
+    app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="0dp"
-    >
+    app:strokeColor="#e0e0e0"
+    app:strokeWidth="1dp">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,24 +36,22 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/center015"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            >
+            app:layout_constraintTop_toTopOf="parent">
+
             <ImageView
                 android:id="@+id/isWinnerImage"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_medal_1"
-                android:visibility="invisible"
-                />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/tvRatingPosition"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_bold"
-                android:textSize="18sp"
-                android:includeFontPadding="false"
                 android:layout_gravity="center"
+                android:fontFamily="@font/poppins_bold"
+                android:includeFontPadding="false"
+                android:textColor="@color/black"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/center015"
                 app:layout_constraintStart_toStartOf="parent"
@@ -67,20 +65,19 @@
             android:id="@+id/textedAvatarOnlyUsers"
             android:layout_width="52dp"
             android:layout_height="52dp"
+            android:background="@drawable/ic_empty_profile_v1"
+            android:elegantTextHeight="true"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:padding="0dp"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/center015"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Д"
-            android:gravity="center"
-            android:background="@drawable/ic_empty_profile_v1"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:fontFamily="@font/poppins_regular"
-            android:padding="0dp"
-            android:visibility="invisible"
-            android:includeFontPadding="false"
-            android:elegantTextHeight="true"
-            />
+            tools:text="Д" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/userAvatarOnlyUsers"
@@ -98,10 +95,10 @@
         <LinearLayout
             android:id="@+id/lnBlockNamesOnlyUsers"
             android:layout_width="wrap_content"
-            android:visibility="invisible"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="14dp"
             android:orientation="vertical"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/center08"
             app:layout_constraintHorizontal_bias="0"
@@ -115,6 +112,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 tools:text="Данил шабельник" />
 
@@ -125,17 +123,18 @@
                 android:ellipsize="end"
                 android:fontFamily="@font/poppins_semi_bold"
                 android:maxLines="1"
+                android:textColor="@color/black"
                 android:textSize="16sp"
 
                 tools:text="\@shabelnik" />
         </LinearLayout>
 
         <TextView
+            android:id="@+id/tvGroupNameOnlyGroups"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="28dp"
             android:background="@drawable/bg_with_corners_10"
-
             android:backgroundTint="@color/accentColor"
             android:elegantTextHeight="true"
             android:fontFamily="@font/poppins_regular"
@@ -148,7 +147,7 @@
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/center08"
-            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toEndOf="@id/center015"
             app:layout_constraintTop_toTopOf="parent"
 
@@ -160,6 +159,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

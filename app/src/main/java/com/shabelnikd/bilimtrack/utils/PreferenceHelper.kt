@@ -1,12 +1,10 @@
 package com.shabelnikd.bilimtrack.utils
 
 import android.content.Context
-import android.content.SharedPreferences
-import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
-import javax.inject.Singleton
+import org.koin.core.component.KoinComponent
 
-class PreferenceHelper {
+
+class PreferenceHelper(context: Context) : KoinComponent {
 
     companion object {
         private const val PREFS_NAME = "sharedPreferences"
@@ -15,12 +13,8 @@ class PreferenceHelper {
         private const val KEY_REFRESH_TOKEN = "refreshToken"
     }
 
-    private var _sharedPreferences: SharedPreferences? = null
-    private val sharedPreferences get() = _sharedPreferences!!
+    private val sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
-    fun initialize(context: Context) {
-        _sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-    }
     var isFirstLaunch: Boolean
         get() = sharedPreferences.getBoolean(KEY_IS_FIRST_LAUNCH, true)
         set(value) = sharedPreferences.edit().putBoolean(KEY_IS_FIRST_LAUNCH, value).apply()

@@ -6,7 +6,7 @@ import com.shabelnikd.bilimtrack.model.models.RatingGroupsResponse
 import com.shabelnikd.bilimtrack.model.models.RatingUsersResponse
 import com.shabelnikd.bilimtrack.model.models.SubjectsMeResponse
 
-class GenericDiffUtil<T: Any> : DiffUtil.ItemCallback<T>() {
+class GenericDiffUtil<T : Any> : DiffUtil.ItemCallback<T>() {
     override fun areItemsTheSame(oldItem: T, newItem: T): Boolean {
         return when {
             oldItem is SubjectsMeResponse && newItem is SubjectsMeResponse -> oldItem.id == newItem.id

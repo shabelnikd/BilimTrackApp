@@ -12,16 +12,34 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top|center_horizontal"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="52dp"
-        android:elegantTextHeight="true"
-        android:fontFamily="@font/poppins_bold"
-        android:text="@string/text_on_board_notes"
-        android:textColor="@color/black"
-        android:textSize="28sp" />
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingVertical="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:fontFamily="@font/inter_28pt_bold"
+            android:text="Bilim"
+            android:textColor="#666666"
+            android:textSize="28sp"
+            app:drawableStartCompat="@drawable/ic_bilim" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_28pt_bold"
+            android:text="Track"
+            android:textColor="#0589C7"
+            android:textSize="28sp" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tvClickableSkip"
@@ -33,7 +51,7 @@
         android:paddingHorizontal="16dp"
         android:paddingVertical="16dp"
         android:text="@string/text_on_board_skip"
-        android:textColor="#D88B02"
+        android:textColor="@color/accentColor"
         android:textSize="15sp"
 
         />
@@ -50,7 +68,7 @@
         app:dotsSize="12dp"
         app:dotsSpacing="6dp"
         app:dotsWidthFactor="1"
-        app:selectedDotColor="#D88B02" />
+        app:selectedDotColor="@color/accentColor" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnStart"
@@ -59,7 +77,6 @@
         android:layout_gravity="center_horizontal|bottom"
         android:layout_marginHorizontal="66dp"
         android:layout_marginBottom="72dp"
-        app:cornerRadius="12dp"
         android:elegantTextHeight="true"
         android:letterSpacing="0.02"
         android:text="@string/text_on_board_start"
@@ -67,6 +84,7 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:cornerRadius="12dp"
 
         />
 
