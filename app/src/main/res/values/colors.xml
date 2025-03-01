@@ -7,5 +7,6 @@
     <color name="winnerPos1">#66FAA918</color>
     <color name="winnerPos2">#66C0C0C0</color>
     <color name="winnerPos3">#66CE8946</color>
+    <color name="cardStroke">#e0e0e0</color>
 
 </resources>

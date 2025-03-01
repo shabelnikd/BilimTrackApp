@@ -1,17 +1,19 @@
 package com.shabelnikd.bilimtrack.model.service
 
-import com.shabelnikd.bilimtrack.model.models.MeResponse
+import com.shabelnikd.bilimtrack.model.models.AchievementsResponse
 import com.shabelnikd.bilimtrack.model.models.RatingGroupsResponse
 import com.shabelnikd.bilimtrack.model.models.RatingUsersResponse
 import com.shabelnikd.bilimtrack.model.models.SubjectsMeResponse
 import com.shabelnikd.bilimtrack.model.models.TokenCreateResponse
 import com.shabelnikd.bilimtrack.model.models.TokenRefreshResponse
+import com.shabelnikd.bilimtrack.model.models.UserResponse
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface BilimTrackApiService {
     @FormUrlEncoded
@@ -32,10 +34,18 @@ interface BilimTrackApiService {
     @Headers("Cache-Control: public, max-age=600")
     suspend fun getUserSubjects(): Response<List<SubjectsMeResponse>>
 
-    @GET("users/me/")
+    @GET("users/{username}/")
     @Authenticated
     @Headers("Cache-Control: public, max-age=600")
-    suspend fun getUserMeInfo(): Response<MeResponse>
+    suspend fun getUserMeInfo(
+        @Path("username") userName: String
+    ): Response<UserResponse>
+
+    @GET("achievements/me/")
+    @Authenticated
+    @Headers("Cache-Control: public, max-age=600")
+    suspend fun getUserMeAchievements(
+    ): Response<List<AchievementsResponse>>
 
     @GET("rating/users/")
     @Headers("Cache-Control: public, max-age=600")

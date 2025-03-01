@@ -19,10 +19,70 @@
         android:id="@+id/profileFragment"
         android:name="com.shabelnikd.bilimtrack.ui.fragments.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile">
+        <argument
+            android:name="username"
+            app:argType="string"
+            android:defaultValue="me" />
+        <action
+            android:id="@+id/action_profileFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/someProfileFragment"
+        android:name="com.shabelnikd.bilimtrack.ui.fragments.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile">
+        <argument
+            android:name="username"
+            app:argType="string"
+            android:defaultValue="me" />
+    </fragment>
     <fragment
         android:id="@+id/ratingTabFragment"
         android:name="com.shabelnikd.bilimtrack.ui.fragments.rating.RatingTabFragment"
         android:label="fragment_rating_tab"
-        tools:layout="@layout/fragment_rating_tab" />
+        tools:layout="@layout/fragment_rating_tab">
+        <action
+            android:id="@+id/action_ratingTabPageFragment_to_someProfileFragment"
+            app:destination="@id/someProfileFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/achievementsFragment"
+        android:name="com.shabelnikd.bilimtrack.ui.fragments.achievements.AchievementsFragment"
+        android:label="fragment_achievements"
+        tools:layout="@layout/fragment_achievements">
+        <action
+            android:id="@+id/action_achievementsFragment_to_achieveDetailsFragment"
+            app:destination="@id/achieveDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/achieveDetailsFragment"
+        android:name="com.shabelnikd.bilimtrack.ui.fragments.achievements.AchieveDetailsFragment"
+        android:label="AchieveDetailsFragment">
+        <argument
+            android:name="achieve"
+            app:argType="com.shabelnikd.bilimtrack.model.models.AchievementsResponse" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/webViewFragment"
+        android:name="com.shabelnikd.bilimtrack.ui.fragments.makalabox.WebViewFragment"
+        android:label="WebViewFragment">
+        <argument
+            android:name="makalaboxUrl"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/someWebViewFragment"
+        android:name="com.shabelnikd.bilimtrack.ui.fragments.makalabox.WebViewFragment"
+        android:label="WebViewFragment">
+        <argument
+            android:name="makalaboxUrl"
+            app:argType="string"
+            android:defaultValue="https://makalabox.com/" />
+    </fragment>
 </navigation>

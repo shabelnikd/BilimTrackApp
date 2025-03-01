@@ -2,5 +2,13 @@
     <string name="app_name">Bilim Track</string>
     <string name="text_on_board_start">Начать</string>
     <string name="text_on_board_skip">Пропустить</string>
+    <string name="profile_card_header_group">Группа</string>
+    <string name="profile_card_header_rating">Рейтинг</string>
+    <string name="profile_card_header_achieve">Достижения</string>
+    <string name="profile_card_header_points">Баллы</string>
+    <string name="profile_rv_courses_title">Мои курсы</string>
+    <string name="profile_rv_achievements_title">Достижения</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

@@ -12,6 +12,12 @@ import com.shabelnikd.bilimtrack.model.models.SubjectsMeResponse
 class CoursesAdapter(
 ) : ListAdapter<SubjectsMeResponse, CoursesAdapter.ViewHolder>(GenericDiffUtil<SubjectsMeResponse>()) {
 
+    private var onClick: ((url: String) -> Unit)? = null
+
+    fun setOnClickListener(listener: (url: String) -> Unit) {
+        this.onClick = listener
+    }
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -26,6 +32,10 @@ class CoursesAdapter(
     ) {
         val courseSubject = getItem(position)
         with(holder) {
+            itemView.setOnClickListener {
+                onClick?.invoke(courseSubject.makalaBoxUrl.toString())
+            }
+
             binding.tvCourseName.text = courseSubject.name
             binding.tvCourseDescription.text = courseSubject.description
 

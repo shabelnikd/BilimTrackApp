@@ -26,6 +26,7 @@ class RatingTabFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.viewPagerRating.adapter = RatingViewPagerAdapter(this)
 
         binding.viewPagerRating.registerOnPageChangeCallback(object :

@@ -1,66 +1,118 @@
+#<------------ Libraries and Versions for classic App with Retrofit + DI + MVVM ---------------->
+
 [versions]
-agp = "8.7.3"
-circleimageview = "3.1.0"
-dotsindicator = "5.1.0"
-glide = "4.16.0"
-koinAndroidVersion = "4.0.2"
+#AGP plugin
+agp = "8.8.1"
+
+#Standard Libraries Versions
 kotlin = "2.1.0"
 coreKtx = "1.15.0"
-junit = "4.13.2"
-junitVersion = "1.2.1"
-espressoCore = "3.6.1"
-appcompat = "1.7.0"
-kotlinGradlePlugin = "2.1.0"
-lottie = "6.6.2"
 material = "1.12.0"
 activity = "1.10.0"
 constraintlayout = "2.2.0"
-navigationSafeArgsGradlePlugin = "2.8.7"
+appcompat = "1.7.0"
+
+#Test Libraries Versions
+junit = "4.13.2"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+#Kotlin Gradle Plugin
+kotlinGradlePlugin = "2.1.0"
+#Leacy support version
+legacySupportV4 = "1.0.0"
+#KSP Version
 ksp = "2.1.0-1.0.29"
+#Circle Image Version
+circleimageview = "3.1.0"
+#Dots Indicator Version
+dotsindicator = "5.1.0"
+#Glide Version
+glide = "4.16.0"
+#Lottie Version
+lottie = "6.6.2"
+
+#<-------------- Often Used Versions ------------->
+
+#Koin Version
+koinAndroidVersion = "4.0.2"
+
+#Navigation Libraries versions
+navigationSafeArgsGradlePlugin = "2.8.7"
 navigationFragmentKtx = "2.8.7"
 navigationUiKtx = "2.8.7"
-lifecycleLivedataKtx = "2.8.7"
-lifecycleViewmodelKtx = "2.8.7"
+
+#Fragment KTX Version
 fragmentKtx = "1.8.6"
-retrofit = "2.9.0"
+
+#Retrofit Libraries Versions
+retrofit = "2.11.0"
 retrofit2KotlinxSerializationConverter = "1.0.0"
 kotlinxSerializationJson = "1.8.0"
 loggingInterceptor = "4.12.0"
-legacySupportV4 = "1.0.0"
+
+#Lifecycle KTX versions
+lifecycleLivedataKtx = "2.8.7"
+lifecycleViewmodelKtx = "2.8.7"
+webkit = "1.12.1"
+
+#<------------- END ------------->
 
 [libraries]
-androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-circleimageview = { module = "de.hdodenhof:circleimageview", version.ref = "circleimageview" }
-dotsindicator = { module = "com.tbuonomo:dotsindicator", version.ref = "dotsindicator" }
+#<------------- Often Used Libraries------------->
 
-glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
-junit = { group = "junit", name = "junit", version.ref = "junit" }
-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
-androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+#Koin // For Dependency injecting
+androidx-webkit = { module = "androidx.webkit:webkit", version.ref = "webkit" }
 koin-android-v402 = { module = "io.insert-koin:koin-android", version.ref = "koinAndroidVersion" }
-kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinGradlePlugin" }
-lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
-androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
-androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
-#Navigation
+#Fragment KTX // Fragments library rewrited on koltin
+androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragmentKtx" }
+
+#Navigation KTX // navigation and safe args
 androidx-navigation-safe-args-gradle-plugin = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigationSafeArgsGradlePlugin" }
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
+
+#Lifecycle KTX // adding lifecycle and view models
 androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
-androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragmentKtx" }
+
+#Retrofit // for network queries
 logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "loggingInterceptor" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 retrofit2-kotlinx-serialization-converter = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "retrofit2KotlinxSerializationConverter" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+
+#<------------- END ------------->
+
+
+#<------------- Other ------------->
+#Standard Libraries
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+#Tests Libraries
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+#Kotlin Gradle Plugin // wtf??
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinGradlePlugin" }
+# Circle image view // For user avatars
+circleimageview = { module = "de.hdodenhof:circleimageview", version.ref = "circleimageview" }
+# Dots Indicator // For ViewPager 2 dots indication
+dotsindicator = { module = "com.tbuonomo:dotsindicator", version.ref = "dotsindicator" }
+#Glide // For download some images from network & local files
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+#Lottie // Player for lottie animations (.json)
+lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
+#Legacy support // wtf??
 androidx-legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacySupportV4" }
-
-
+#<----------- END ----------->
 
 [plugins]
+#Standart plugins
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+#KSP plugin // kotlin annotations processor (usually need for Room | Hilt)
 devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 

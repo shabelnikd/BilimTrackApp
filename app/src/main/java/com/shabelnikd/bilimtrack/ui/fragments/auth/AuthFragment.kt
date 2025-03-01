@@ -41,6 +41,11 @@ class AuthFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupListeners()
+        observeData()
+    }
+
+    private fun setupListeners() {
         val etUsernameStateChange = fun(state: Boolean) { isUsernameFilled = state }
         val etPasswordStateChange = fun(state: Boolean) { isPasswordFilled = state }
 
@@ -67,7 +72,9 @@ class AuthFragment : Fragment() {
                 binding.etPassword.editText?.text.toString()
             )
         }
+    }
 
+    private fun observeData() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.loginResult.collect { result ->
@@ -92,7 +99,10 @@ class AuthFragment : Fragment() {
                 }
             }
         }
+    }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -2,8 +2,8 @@ package com.shabelnikd.bilimtrack.ui.fragments.profile
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.shabelnikd.bilimtrack.model.models.MeResponse
 import com.shabelnikd.bilimtrack.model.models.SubjectsMeResponse
+import com.shabelnikd.bilimtrack.model.models.UserResponse
 import com.shabelnikd.bilimtrack.model.repositories.BilimTrackRepository
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -24,9 +24,9 @@ class ProfileViewModel() : ViewModel(), KoinComponent {
     val subjectsResult: SharedFlow<SubjectsResult> get() = _subjectsResult.asSharedFlow()
 
 
-    fun getUserMeData() {
+    fun getUserMeData(username: String) {
         viewModelScope.launch {
-            val response = apiRepository.getUserMeInfo()
+            val response = apiRepository.getUserMeInfo(username)
             when {
                 response.isSuccess && response.getOrNull()?.isSuccessful == true -> {
                     response.getOrNull()?.body()?.let { body ->
@@ -35,6 +35,7 @@ class ProfileViewModel() : ViewModel(), KoinComponent {
                         _profileResult.emit(ProfileResult.Error("Ошибка получения профия"))
                     }
                 }
+
                 else -> _profileResult.emit(ProfileResult.Error("Ошибка запроса профия"))
             }
         }
@@ -55,13 +56,14 @@ class ProfileViewModel() : ViewModel(), KoinComponent {
 
                 else -> _subjectsResult.emit(SubjectsResult.Error("Ошибка запроса курсов"))
 
+
             }
         }
     }
 
     @Serializable
     sealed class ProfileResult {
-        data class Success(val me: MeResponse) : ProfileResult()
+        data class Success(val me: UserResponse) : ProfileResult()
         data class Error(val errorMessage: String) : ProfileResult()
     }
 

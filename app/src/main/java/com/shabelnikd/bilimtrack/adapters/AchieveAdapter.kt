@@ -1,16 +1,23 @@
 package com.shabelnikd.bilimtrack.adapters
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.shabelnikd.bilimtrack.databinding.ItemAchieveBinding
+import com.shabelnikd.bilimtrack.model.models.AchievementsResponse
 import com.shabelnikd.bilimtrack.model.models.BackgroundAchieve
-import com.shabelnikd.bilimtrack.model.models.MeResponse
 
 class AchieveAdapter(
-) : ListAdapter<MeResponse.Achievement, AchieveAdapter.ViewHolder>(GenericDiffUtil<MeResponse.Achievement>()) {
+) : ListAdapter<AchievementsResponse, AchieveAdapter.ViewHolder>(GenericDiffUtil<AchievementsResponse>()) {
+
+    private var onClick: ((achieve: AchievementsResponse) -> Unit)? = null
+
+    fun setOnClickListener(listener: (achieve: AchievementsResponse) -> Unit) {
+        this.onClick = listener
+    }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -26,13 +33,20 @@ class AchieveAdapter(
     ) {
         val achieveSubject = getItem(position)
         with(holder) {
-            binding.tvAchieveName.text = achieveSubject.name
-            binding.tvTypeRarity.text = achieveSubject.rarity?.name
 
-            getResIdByApiId(achieveSubject.rarity?.id)?.let {
-                binding.tvTypeRarity.setBackgroundResource(it)
+            itemView.setOnClickListener {
+                onClick?.invoke(achieveSubject)
             }
 
+            binding.tvAchieveName.text = achieveSubject.name
+            getResIdByApiId(achieveSubject.rarity?.id)?.let {
+                binding.forSetBackground.setBackgroundResource(it)
+            }
+
+            when (achieveSubject.isOpened) {
+                true -> binding.isOpened.visibility = View.INVISIBLE
+                else -> binding.isOpened.visibility = View.VISIBLE
+            }
 
             achieveSubject.photo?.let { photoUrl ->
                 Glide.with(binding.root).load(photoUrl).into(binding.achieveImage)

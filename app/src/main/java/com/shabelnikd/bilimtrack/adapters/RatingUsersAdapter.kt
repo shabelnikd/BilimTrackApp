@@ -1,6 +1,5 @@
 package com.shabelnikd.bilimtrack.adapters
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +13,12 @@ import com.shabelnikd.bilimtrack.model.models.RatingUsersResponse
 
 class RatingUsersAdapter() :
     ListAdapter<RatingUsersResponse, RatingUsersAdapter.ViewHolder>(GenericDiffUtil<RatingUsersResponse>()) {
+
+    private var onClick: ((username: String) -> Unit)? = null
+
+    fun setOnClickListener(listener: (username: String) -> Unit) {
+        this.onClick = listener
+    }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -29,7 +34,7 @@ class RatingUsersAdapter() :
         position: Int
     ) {
         val userSubject = getItem(position)
-        val localPosition = position.plus(1).toString()
+        val localPosition = userSubject.rating.toString()
 
         with(holder) {
             binding.lnBlockNamesOnlyUsers.visibility = View.VISIBLE
@@ -38,8 +43,14 @@ class RatingUsersAdapter() :
             binding.tvRatingPosition.text = localPosition
             when {
                 userSubject.firstName != null && userSubject.lastName != null ->
-                    binding.tvUserFullName.text = String.format("%s %s", userSubject.firstName, userSubject.lastName)
+                    binding.tvUserFullName.text =
+                        String.format("%s %s", userSubject.firstName, userSubject.lastName)
+
                 else -> binding.tvUserFullName.visibility = View.GONE
+            }
+
+            itemView.setOnClickListener {
+                onClick?.invoke(userSubject.username.toString())
             }
         }
 

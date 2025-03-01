@@ -1,75 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:clipToPadding="false"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:clipToPadding="false">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginVertical="5dp"
+        android:layout_marginHorizontal="0dp"
+        app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="10dp"
-        app:cardElevation="3dp"
-
-
-        app:strokeColor="@android:color/darker_gray"
+        app:cardElevation="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:strokeColor="@color/cardStroke"
         app:strokeWidth="1dp">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/forSetBackground"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginHorizontal="10dp"
-            android:orientation="vertical">
+            android:background="@drawable/bg_rarity_epic">
 
             <ImageView
                 android:id="@+id/achieveImage"
-                android:layout_width="140dp"
-                android:layout_height="140dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:paddingHorizontal="5dp"
+                android:background="@color/white"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 android:src="@drawable/img" />
 
             <TextView
-                android:id="@+id/tvTypeRarity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/bg_rarity_exclusive"
-                android:elevation="3dp"
-                android:paddingVertical="5dp"
-                android:shadowColor="#80000000"
-                android:shadowDx="-2"
-                android:shadowDy="2"
-                android:shadowRadius="4"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                tools:text="Эксклюзивная"
-
-                />
-
-            <TextView
                 android:id="@+id/tvAchieveName"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/poppins_semi_bold"
-                android:includeFontPadding="false"
+                android:textSize="11sp"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/poppins_regular"
                 android:maxLines="3"
-                android:minLines="3"
-                android:textAlignment="center"
-                android:textColor="@color/black"
+                android:minLines="2"
+                android:gravity="center"
+                android:ellipsize="end"
+                app:layout_constraintTop_toBottomOf="@id/achieveImage"
+                app:layout_constraintStart_toStartOf="@id/achieveImage"
+                app:layout_constraintEnd_toEndOf="@id/achieveImage"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:textColor="@color/white"
                 tools:text="Самая лучшая группа" />
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/isOpened"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#A6000000">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_lock"
+
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent
+"
+                app:layout_constraintVertical_bias="0.4" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </com.google.android.material.card.MaterialCardView>
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 

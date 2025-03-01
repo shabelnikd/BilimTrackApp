@@ -9,9 +9,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
-import com.shabelnikd.bilimtrack.adapters.AchieveAdapter
 import com.shabelnikd.bilimtrack.adapters.CoursesAdapter
 import com.shabelnikd.bilimtrack.databinding.FragmentProfileBinding
 import kotlinx.coroutines.launch
@@ -22,9 +24,14 @@ class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
+    private val args: ProfileFragmentArgs by navArgs()
+
 
     private val coursesAdapter = CoursesAdapter()
-    private val achieveAdapter = AchieveAdapter()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,14 +43,20 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loadData()
+        loadData(args.username)
         initUI()
         updateUI()
     }
 
-    private fun loadData() {
-        viewModel.getUserMeData()
-        viewModel.getSubjectsMeData()
+    private fun loadData(username: String) {
+        when {
+            username == "me" -> {
+                viewModel.getUserMeData(username)
+                viewModel.getSubjectsMeData()
+            }
+
+            else -> viewModel.getUserMeData(username)
+        }
     }
 
     private fun initUI() {
@@ -52,10 +65,26 @@ class ProfileFragment : Fragment() {
             layoutManager = LinearLayoutManager(requireContext())
         }
 
-        binding.rvAchieve.apply {
-            adapter = achieveAdapter
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        coursesAdapter.setOnClickListener { url ->
+            findNavController().navigate(
+                ProfileFragmentDirections.actionProfileFragmentToWebViewFragment(
+                    url
+                )
+            )
+        }
+
+        when {
+            args.username == "me" -> {
+                binding.tvCoursesText.visibility = View.VISIBLE
+                binding.rvCoursers.visibility = View.VISIBLE
+                binding.rvCoursers.adapter = coursesAdapter
+            }
+
+            else -> {
+                binding.tvCoursesText.visibility = View.GONE
+                binding.rvCoursers.visibility = View.GONE
+                binding.rvCoursers.adapter = null
+            }
         }
     }
 
@@ -63,6 +92,11 @@ class ProfileFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 collectProfile()
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 collectSubjects()
             }
         }
@@ -73,6 +107,11 @@ class ProfileFragment : Fragment() {
             with(binding) {
                 when (result) {
                     is ProfileViewModel.ProfileResult.Success -> {
+                        result.me.photo?.let {
+                            Glide.with(binding.root).load(it)
+                                .into(binding.profileImage)
+                        }
+
                         tvUsername.text = result.me.username
 
                         if (result.me.firstName != null && result.me.lastName != null) {
@@ -85,7 +124,6 @@ class ProfileFragment : Fragment() {
                         tvAchieveValue.text = result.me.achievementsCount.toString()
                         tvScoreValue.text = result.me.points.toString()
 
-                        achieveAdapter.submitList(result.me.achievements)
                     }
 
                     is ProfileViewModel.ProfileResult.Error -> {
