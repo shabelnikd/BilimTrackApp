@@ -76,6 +76,7 @@ class AuthFragment : Fragment() {
 
     private fun observeData() {
         viewLifecycleOwner.lifecycleScope.launch {
+
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.loginResult.collect { result ->
                     when (result) {
@@ -84,7 +85,7 @@ class AuthFragment : Fragment() {
                             val refreshToken = result.refreshToken
 
                             preferenceHelper.accessToken = accessToken
-                            preferenceHelper.refreshToken = refreshToken
+//                            preferenceHelper.refreshToken = refreshToken
 
                             activity?.finish()
                             val intent = Intent(requireContext(), MainActivity::class.java)

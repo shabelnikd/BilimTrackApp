@@ -13,7 +13,7 @@ import kotlinx.serialization.Serializable
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class ProfileViewModel() : ViewModel(), KoinComponent {
+class ProfileViewModel : ViewModel(), KoinComponent {
 
     private val apiRepository: BilimTrackRepository by inject()
 
